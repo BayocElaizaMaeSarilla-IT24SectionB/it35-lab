@@ -1,40 +1,33 @@
-import React, { useState } from 'react';
-import { IonAlert, IonButton } from '@ionic/react';
+import React from 'react';
+import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/react';
+import { homeOutline, informationCircleOutline } from 'ionicons/icons';
+import Search from './Search'; // Import your Search component
 
-
-function Search() {
-  const [showAlert, setShowAlert] = useState(false);
-  const [quote, setQuote] = useState('');
-
-  const funnyQuotes = [
-    "I'm not lazy, I'm on energy-saving mode.",
-    "I'm not arguing, I'm just explaining why I'm right.",
-    "My bed and I love each other, only the alarm clock comes between us.",
-    "I'm not great at the advice. Can I interest you in a sarcastic comment?",
-    "Common sense is like deodorant. The people who need it most never use it.",
-  ];
-
-  const handleClick = () => {
-    const randomQuote = funnyQuotes[Math.floor(Math.random() * funnyQuotes.length)];
-    setQuote(randomQuote);
-    setShowAlert(true);
-  };
-
+const HomeTabs = () => {
   return (
-    <>
-      <IonButton expand="block" className="funny-btn" onClick={handleClick}>
-        Don't Press Me!
-      </IonButton>
+    <IonTabs>
+      {/* Tab content */}
+      <IonTabBar slot="bottom">
+        <IonTabButton tab="home" href="/home">
+          <IonIcon icon={homeOutline} />
+          <IonLabel>Home</IonLabel>
+        </IonTabButton>
 
-      <IonAlert
-        isOpen={showAlert}
-        onDidDismiss={() => setShowAlert(false)}
-        header="You pressed it!"
-        message={quote}
-        buttons={['LOL!']}
-      />
-    </>
+        <IonTabButton tab="search" href="/search">
+          <IonIcon icon={informationCircleOutline} />
+          <IonLabel>Search</IonLabel>
+        </IonTabButton>
+      </IonTabBar>
+
+      {/* Tab pages */}
+      <div tab="home">
+        <h1>Welcome Home!</h1>
+      </div>
+      <div tab="search">
+        <Search /> {/* Add your Search component here */}
+      </div>
+    </IonTabs>
   );
-}
+};
 
-export default Search;
+export default HomeTabs;
