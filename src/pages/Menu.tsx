@@ -1,4 +1,3 @@
-
 import { 
     IonButton,
     IonButtons,
@@ -73,3 +72,4 @@ import Details from './Details';
   };
   
   export default Menu;
+  
