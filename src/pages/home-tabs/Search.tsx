@@ -1,34 +1,51 @@
 import React from 'react';
 import {
-   IonPage,
-   IonHeader,
-   IonToolbar,
-   IonTitle,
-   IonContent,
-   IonDatetime,
-   IonCard,
-   IonCardContent,
+  IonPage,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonDatetime,
+  IonCard,
+  IonCardContent,
 } from '@ionic/react';
 
-function Search() {
-   return (
+const Search: React.FC = () => {
+  return (
     <IonPage>
-      <IonHeader>
+      <IonHeader translucent>
         <IonToolbar color="primary">
           <IonTitle>Pick a Date & Time</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent
+        fullscreen
         className="ion-padding"
         style={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          background: '#f0f0f0',
-          height: '100vh',
+          background: 'linear-gradient(to bottom right, #e0f7fa, #ffffff)',
         }}
       >
-        <IonCard style={{ width: '90%', maxWidth: '400px', borderRadius: '15px', boxShadow: '0 4px 8px rgba(0,0,0,0.1)' }}>
+        <IonCard
+          style={{
+            width: '90%',
+            maxWidth: '400px',
+            borderRadius: '20px',
+            backdropFilter: 'blur(10px)',
+            backgroundColor: 'rgba(255, 255, 255, 0.7)',
+            boxShadow: '0 8px 20px rgba(0, 0, 0, 0.1)',
+            transition: 'transform 0.3s ease',
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as unknown as HTMLDivElement).style.transform = 'scale(1.02)';
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as unknown as HTMLDivElement).style.transform = 'scale(1)';
+          }}
+        >
           <IonCardContent>
             <IonDatetime
               presentation="date-time"
@@ -36,15 +53,16 @@ function Search() {
               style={{
                 width: '100%',
                 padding: '10px',
-                borderRadius: '10px',
+                borderRadius: '12px',
                 backgroundColor: '#ffffff',
+                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.05)',
               }}
-            ></IonDatetime>
+            />
           </IonCardContent>
         </IonCard>
       </IonContent>
     </IonPage>
   );
-}
- 
+};
+
 export default Search;
