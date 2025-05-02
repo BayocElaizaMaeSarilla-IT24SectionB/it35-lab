@@ -32,15 +32,14 @@ const AlertBox: React.FC<{ message: string; isOpen: boolean; onClose: () => void
 
 // Styles
 const inputStyle = {
-  margin: '12px 0',
+  margin: '10px 0',
   width: '100%',
   borderRadius: '25px',
   fontFamily: 'Arial, sans-serif',
   fontSize: '16px',
   fontWeight: 400,
   color: '#333',
-  padding: '14px 20px',
-  backgroundColor: '#fff',
+  background: 'linear-gradient(to right,rgb(248, 243, 243),rgb(248, 244, 244))',
   transition: 'all 0.3s ease',
 };
 
@@ -109,38 +108,60 @@ const Register: React.FC = () => {
     <IonPage>
       <IonContent fullscreen className="ion-padding" style={{ position: 'relative', overflow: 'hidden', minHeight: '100vh' }}>
 
-        {/* Full Page Background */}
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(135deg, rgb(52, 65, 58), rgb(18, 158, 102))', zIndex: 1 }} />
-        <div style={{ position: 'absolute', borderRadius: '50%', background: 'linear-gradient(45deg, rgb(115, 35, 38), rgb(232, 94, 56))', opacity: 0.6, width: '120px', height: '120px', top: '5%', left: '10%', animation: 'float 10s infinite ease-in-out' }} />
+        {/* Background Design */}
+        <div style={{ position: 'absolute', borderRadius: '5  0%', background: 'linear-gradient(45deg, rgb(115, 35, 38), rgb(232, 94, 56))', opacity: 0.6, width: '120px', height: '120px', top: '5%', left: '10%', animation: 'float 10s infinite ease-in-out' }} />
         <div style={{ position: 'absolute', borderRadius: '50%', background: 'linear-gradient(45deg, rgb(115, 35, 38), rgb(232, 94, 56))', opacity: 0.6, width: '200px', height: '200px', top: '30%', left: '70%', animation: 'float 12s infinite ease-in-out' }} />
         <div style={{ position: 'absolute', borderRadius: '50%', background: 'linear-gradient(45deg, rgb(115, 35, 38), rgb(232, 94, 56))', opacity: 0.6, width: '150px', height: '150px', bottom: '15%', left: '20%', animation: 'float 8s infinite ease-in-out' }} />
         <div style={{ position: 'absolute', borderRadius: '50%', background: 'linear-gradient(45deg, rgb(115, 35, 38), rgb(232, 94, 56))', opacity: 0.6, width: '100px', height: '100px', bottom: '5%', right: '15%', animation: 'float 10s infinite ease-in-out' }} />
 
-        {/* Background Animation Keyframes */}
+        {/* Floating Animation */}
         <style>
           {`
             @keyframes float {
               0%, 100% { transform: translateY(0) rotate(0); }
               50% { transform: translateY(-20px) rotate(45deg); }
             }
+            @keyframes fadeIn {
+              0% { opacity: 0; transform: translateY(20px); }
+              100% { opacity: 1; transform: translateY(0); }
+            }
           `}
         </style>
 
-        {/* Registration Form */}
-        <div style={{
-          width: '90%',
-          maxWidth: 'none',
-          margin: '2vh auto 0 auto',
-          padding: '30px 40px',
-          borderRadius: '30px',
-          backgroundColor: 'rgba(255, 255, 255, 0.97)',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-          position: 'relative',
-          zIndex: 2,
-        }}>
-          <h1 style={{ textAlign: 'center', fontWeight: 'bold', color: '#333', marginBottom: '20px' }}>
+        {/* Registration Card */}
+        <div
+          style={{
+            width: '50%',
+            maxWidth: 'none',
+            margin: '1vh auto 0 auto',
+            padding: '10px 20px',
+            borderRadius: '30px',
+            backgroundColor: 'rgba(247, 243, 243, 0.97)',
+            boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+            position: 'relative',
+            zIndex: 1,
+            animation: 'fadeIn 1s ease-out',
+          }}
+        >
+          {/* ✅ Logo - Resized */}
+          <div style={{ textAlign: 'center', marginBottom: '15px' }}>
+            <img
+              src="https://clipground.com/images/eb-logo.jpg"
+              alt="Logo"
+              style={{
+                borderRadius: '15px',
+                width: '80px',
+                height: 'auto',
+              }}
+            />
+          </div>
+
+          <h1 style={{ textAlign: 'center', fontWeight: '900', color: '#2f3640', fontSize: '26px', marginBottom: '10px' }}>
             Create Your Account
           </h1>
+          <p style={{ textAlign: 'center', color: '#7f8c8d', marginBottom: '20px' }}>
+            Get started by filling the information below
+          </p>
 
           <IonInput style={inputStyle} label="Username" labelPlacement="floating" fill="outline" type="text" placeholder="Enter your username" value={username} onIonInput={e => setUsername(e.detail.value ?? '')} />
           <IonInput style={inputStyle} label="First Name" labelPlacement="floating" fill="outline" type="text" placeholder="First Name" value={firstName} onIonInput={e => setFirstName(e.detail.value ?? '')} />
@@ -156,7 +177,7 @@ const Register: React.FC = () => {
           <IonButton
             expand="full"
             color="success"
-            style={{ marginTop: '20px', borderRadius: '25px' }}
+            style={{ marginTop: '20px', borderRadius: '25px', fontWeight: 'bold' }}
             onClick={handleRegisterClick}
             disabled={loading}
           >
