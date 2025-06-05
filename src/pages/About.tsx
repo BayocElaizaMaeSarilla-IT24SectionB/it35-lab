@@ -26,7 +26,7 @@ const About: React.FC = () => {
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
         <IonText>
-          <h2>Welcome to Our App</h2>
+          <h2>Welcome!</h2>
           <p>
             This app is built using Ionic React, providing a seamless mobile and web experience. 
             Here you can find inspiration, useful resources, and learn about the features we offer.
