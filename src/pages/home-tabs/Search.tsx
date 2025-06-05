@@ -1,3 +1,4 @@
+
 import React from 'react';
 import {
   IonPage,
@@ -7,6 +8,8 @@ import {
   IonContent,
   IonDatetime,
   IonCard,
+  IonButtons,
+  IonMenuButton,
   IonCardContent,
 } from '@ionic/react';
 
@@ -15,6 +18,9 @@ const Search: React.FC = () => {
     <IonPage>
       <IonHeader translucent>
         <IonToolbar color="primary">
+                    <IonButtons slot="start">
+                      <IonMenuButton />
+                    </IonButtons>
           <IonTitle>Pick a Date & Time</IonTitle>
         </IonToolbar>
       </IonHeader>
